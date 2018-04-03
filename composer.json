@@ -1,0 +1,21 @@
+{
+    "name": "jimenezj89/php-tech-test",
+    "description": "Another PHP technical test",
+    "authors": [
+        {
+            "name": "Javier Jiménez Masip",
+            "email": "javier.jimenez.masip@gmail.com"
+        }
+    ],
+    "autoload" : {
+        "psr-4": {
+            "TechTest\\Part1": "src/part1",
+            "TechTest\\Part2": "src/part2"
+        }
+    },
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^7",
+        "mikey179/vfsStream": "^1.6"
+    }
+}
