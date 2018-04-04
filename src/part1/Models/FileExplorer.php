@@ -2,7 +2,6 @@
 
 namespace TechTest\Part1\Models;
 
-
 final class FileExplorer
 {
     /** @var string */
@@ -12,7 +11,7 @@ final class FileExplorer
 
     public function __construct(string $root = null)
     {
-        $this->root = is_null($root) ? getcwd() : $root;
+        $this->root          = is_null($root) ? getcwd() : $root;
         $this->currentFolder = new Folder($this->root);
     }
 
@@ -27,20 +26,20 @@ final class FileExplorer
 
     public function moveDownTo(string $aChildFolderName): void
     {
-        if (!$this->currentFolder->hasChild($aChildFolderName)) {
+        if ( ! $this->currentFolder->hasChild($aChildFolderName)) {
             throw new \Exception("Folder {$aChildFolderName} does not exists!");
         }
 
-        $this->currentFolder = new Folder($this->currentFolder->path.'/'.$aChildFolderName);
+        $this->currentFolder = new Folder($this->currentFolder->path . '/' . $aChildFolderName);
     }
 
     public function getItems(): array
     {
-       return $this->currentFolder->getItems();
+        return $this->currentFolder->getItems();
     }
-    
-    private function currentPathIsRootPath(): bool 
+
+    private function currentPathIsRootPath(): bool
     {
         return ($this->root == $this->currentFolder->path) ? true : false;
-    }    
+    }
 }

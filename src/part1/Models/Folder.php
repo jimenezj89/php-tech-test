@@ -17,14 +17,15 @@ class Folder
     {
         $items = [];
 
-        foreach(scandir($this->path) as $folderItem) {
-            if (is_dir($folderItem)){
-                $item = new Folder($this->path.'/'.$folderItem.'/');
+        foreach (scandir($this->path) as $folderItem) {
+            if (is_dir($folderItem)) {
+                $item = new Folder($this->path . '/' . $folderItem . '/');
             } else {
-                $item = new File($this->path.'/'.$folderItem);
+                $item = new File($this->path . '/' . $folderItem);
             }
             array_push($items, $item);
         }
+
         return $items;
     }
 
@@ -35,6 +36,6 @@ class Folder
 
     public function hasChild(string $aFolderName): bool
     {
-        return file_exists($this->path.'/'.$aFolderName);
+        return file_exists($this->path . '/' . $aFolderName);
     }
 }

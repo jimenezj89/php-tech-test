@@ -2,7 +2,6 @@
 
 namespace TechTest\Part2\Application;
 
-
 use TechTest\Part2\Models\InputParamsValidator;
 
 final class SanitizeDataFromRequest

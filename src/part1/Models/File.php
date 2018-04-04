@@ -2,8 +2,6 @@
 
 namespace TechTest\Part1\Models;
 
-use finfo;
-
 class File
 {
     private $path;
