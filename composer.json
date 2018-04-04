@@ -9,8 +9,8 @@
     ],
     "autoload" : {
         "psr-4": {
-            "TechTest\\Part1": "src/part1",
-            "TechTest\\Part2": "src/part2"
+            "TechTest\\Part1\\": "src/part1",
+            "TechTest\\Part2\\": "src/part2"
         }
     },
     "require": {},

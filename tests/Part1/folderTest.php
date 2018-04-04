@@ -8,50 +8,34 @@ use TechTest\Part1\Models\Folder;
 
 class folderTest extends TestCase
 {
-
-    private $filesystem;
-
+    private $folder;
+    
     public function setUp()
     {
-        $directory = [
-            'tmp' => [
-                'home' => [
-                    'user1' => [
-                        'mp3' => [],
-                        'music.waw' => 'nice song',
-                        'abc.waw' => 'bad song',
-                    ],
-                    'user2' => [
-                        'mp4' => [],
-                        'music.waw' => 'nice song',
-                        'abc.waw' => 'bad song',
-                    ]
-                ]
-            ]
-        ];
-        $this->filesystem = vfsStream::setup('root');
+        vfsStream::setup('home');
+        $this->folder = new Folder(vfsStream::url('home/'));
     }
 
     public function testGetItems()
     {
-        $folder = new Folder($this->filesystem);
+        $children = $this->folder->getItems();
 
-        $children = $folder->getItems();
-
-        $this->assertInstanceOf('array', $children);
+        $this->assertInternalType('array', $children);
+        $this->assertEquals(2, count($children));
     }
 
     public function testGetParent()
     {
-        $folder = new Folder($this->filesystem);
+        $parent = $this->folder->getParent();
 
-        $parent = $folder->getParent();
-
-        $this->assertInstanceOf('Folder', $parent);
+        $this->assertInstanceOf('TechTest\Part1\Models\Folder', $parent);
     }
 
     public function testHasChild()
     {
+        $child = $this->folder->hasChild('user2');
 
+        $this->assertInternalType('bool', $child);
+        $this->assertEquals(false, $child);
     }
 }
