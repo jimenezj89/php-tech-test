@@ -16,10 +16,10 @@ final class FileExplorer
         $this->currentFolder = new Folder($this->root);
     }
 
-    public function moveUp(): void
+    public function moveUp()
     {
         if ($this->currentPathIsRootPath()) {
-            return;
+            return false;
         }
 
         $this->currentFolder = $this->currentFolder->getParent();
